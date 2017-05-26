@@ -3,10 +3,19 @@ package ch.hearc.tchat.client;
 import java.io.Serializable;
 
 /**
- * Created by paul.jeanbour on 18.05.2017.
+ * Client side layout for a message. To display raw strings into nice chat log.
+ * 
+ * @param pseudo - Pseudo of the use who sent this message.
+ * @param content - Content of the message.
  */
 public class Message implements Serializable {
-    private String pseudo;
+    
+	/**
+	 * V1, no change log available...
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private String pseudo;
     private String content;
 
     public Message(String pseudo, String content){

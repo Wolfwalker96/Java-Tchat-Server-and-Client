@@ -7,8 +7,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-import javax.swing.*;
-
 public class Controller {
 
     @FXML
