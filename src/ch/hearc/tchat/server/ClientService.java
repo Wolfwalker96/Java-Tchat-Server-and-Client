@@ -33,7 +33,7 @@ public class ClientService implements Runnable{
 				//Socket will be closed in message
 				Socket socket = serverSocket.accept();
 				tcpSocket.add(socket);
-				System.out.println("SERVER - New client acquired");
+				System.out.println("SERVER: New client acquired");
 			}
 			catch(IOException e) {
 				
