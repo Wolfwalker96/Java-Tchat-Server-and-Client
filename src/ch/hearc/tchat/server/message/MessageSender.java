@@ -1,7 +1,6 @@
 package ch.hearc.tchat.server.message;
 
 import java.io.PrintWriter;
-import java.net.Socket;
 import java.util.List;
 
 /**

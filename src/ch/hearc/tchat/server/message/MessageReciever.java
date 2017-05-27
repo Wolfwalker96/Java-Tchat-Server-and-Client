@@ -2,7 +2,6 @@ package ch.hearc.tchat.server.message;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.SocketException;
 import java.util.List;
 
 /**
