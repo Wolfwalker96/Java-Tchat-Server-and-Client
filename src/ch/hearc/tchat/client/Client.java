@@ -1,73 +1,75 @@
 package ch.hearc.tchat.client;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
 public class Client {
 	
-	public static void main(String[] args){
+	Socket socket = null;
+	PrintWriter out = null;
+	String ip = "127.0.0.1";
+	int port = 2017;
+	Thread reciever = null;
+
+	public Client(){
+			
+			this.init();
+		}
+	public Client(String ip, int port){
 		
-		Socket socket = null;
-		BufferedReader in = null;
-		PrintWriter out = null;
-		
+		this.ip = ip;
+		this.port = port;
+		this.init();
+	}
+	
+	public void close(){
 		try {
 			
-			//send
-			System.out.println("Client is starting...");
-			while(socket == null){
+			while(!socket.isClosed()){
 				
-				try {	
-
-				socket = new Socket("127.0.0.1", 2017);
-				}
-				catch (IOException e) {
-	
-					System.out.println("Could not reach server, trying again...");
-				}
+				socket.close();
 			}
-			//wait and get info
-			System.out.println("CLIENT: Getting input stream");
-			
-			in = new BufferedReader(
-					new InputStreamReader(socket.getInputStream()));
-			System.out.println("CLIENT: Getting output stream");
-			out = new PrintWriter(socket.getOutputStream());
-			//print info
-			System.out.println("CLIENT: Sending message");
-			
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
-
-				e.printStackTrace();
-			}
-			
-			out.flush();
-			out.println("01Florian: Salut la crique! :-)");
-			out.flush();
-
-			System.out.println("CLIENT: message sent");
-			System.out.println("CLIENT: Recieved from server: " + in.readLine());
-			
+			out.close();
 		} catch (IOException e) {
-
+			
 			e.printStackTrace();
 		}
-		finally{
+	}
+	public void init(){
+		
+		System.out.println("Client is starting...");
+		while(socket == null){
 			
-			try {
-				
-				in.close();
-				socket.close();
-			} catch (IOException e) {
-				
-				e.printStackTrace();
+			try {	
+
+				socket = new Socket(ip, port);
+			}
+			catch (IOException e) {
+
+				System.out.println("Could not reach server, trying again...");
 			}
 		}
+		try {
+			
+			out = new PrintWriter(socket.getOutputStream());
+			reciever = new Thread(new Reciever(socket, this));
+			reciever.start();
+			System.out.println("CLIENT: Ready.");
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}	
+	public void send(String message){
 		
+		out.println(message);
+		out.flush(); //Overkill for the win!
+		System.out.println("CLIENT: Message sent.");
+	}
+	public void newMessage(String message){
+		
+		//Add new message on interface.
+		System.out.println("CLIENT: Display message on interface. Msg: "+message);
 	}
 }

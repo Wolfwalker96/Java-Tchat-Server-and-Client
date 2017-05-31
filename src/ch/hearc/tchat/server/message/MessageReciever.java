@@ -33,7 +33,7 @@ public class MessageReciever implements Runnable{
 				
 				currentMsg = in.readLine();
 				System.out.println("SERVER: Message recieved ");
-				if(currentMsg != null){
+				if(currentMsg != null && currentMsg.length() > 2){
 					flag = 	Integer.parseInt(currentMsg.substring(0, 2));
 				}
 				else{
@@ -60,11 +60,12 @@ public class MessageReciever implements Runnable{
 						running = false;
 						break;
 				}
+				Thread.sleep(200);
 				currentMsg = null;
 			} catch (IOException e) {
-				
 				running = false;
-				//e.printStackTrace();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		}
 	}

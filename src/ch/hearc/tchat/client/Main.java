@@ -19,6 +19,16 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        launch(args);
+        //launch(args);
+    	
+    	//test area
+    	Client client = new Client();				//create
+       	client.send("01Florian: Hello World!");		//send message
+    	try {
+			Thread.sleep(3000);						//wait for response
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+    	client.close();								//close
     }
 }

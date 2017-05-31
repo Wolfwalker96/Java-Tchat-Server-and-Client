@@ -29,7 +29,7 @@ public class MessageSender implements Runnable {
 			
 			if(!message.isEmpty()){
 				
-				System.out.println("SERVER: Broadcasting message to users." + message.size());
+				System.out.println("SERVER: Broadcasting message to users." + " Nb of users: " + out.size());
 				for(String msgToSend: message){
 					
 					for(PrintWriter output: out){
