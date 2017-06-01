@@ -35,4 +35,8 @@ public class Message implements Serializable {
     public String toString() {
         return getPseudo()+" : "+getContent();
     }
+
+    public String toSend(){
+        return toString().replaceAll("\n"," ");
+    }
 }

@@ -8,8 +8,8 @@ import java.util.List;
  * every users ordered by the older to the newest. Sent messages
  * are removed from the message list.
  *
- * @param out - A list of outputs, represent every users to send data to.
- * @param message - A list of every messages to send.
+ * @param  - A list of outputs, represent every users to send data to.
+ * @param  - A list of every messages to send.
  */
 public class MessageSender implements Runnable {
 

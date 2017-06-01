@@ -12,23 +12,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("views_controllers/sample.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 640, 440));
+        primaryStage.setScene(new Scene(root, 674, 417));
         primaryStage.setResizable(false);
         primaryStage.show();
     }
 
 
     public static void main(String[] args) {
-        //launch(args);
-    	
-    	//test area
-    	Client client = new Client();				//create
-       	client.send("01Florian: Hello World!");		//send message
-    	try {
-			Thread.sleep(3000);						//wait for response
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-    	client.close();								//close
+        launch(args);
     }
 }

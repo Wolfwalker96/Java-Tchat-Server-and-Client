@@ -8,8 +8,8 @@ import java.util.List;
  * One thread of this class is created for every users. This thread is listening
  * to the user and add any text received to the message list.
  *
- * @param in - An input, represent an user to listen to.
- * @param message - A list in which we add any message we received from the user.
+ * @param  - An input, represent an user to listen to.
+ * @param  - A list in which we add any message we received from the user.
  */
 public class MessageReciever implements Runnable{
 
@@ -30,9 +30,9 @@ public class MessageReciever implements Runnable{
 		while(running){
 			
 			try {
-				
 				currentMsg = in.readLine();
 				System.out.println("SERVER: Message recieved ");
+				//System.out.println(currentMsg);
 				if(currentMsg != null && currentMsg.length() > 2){
 					flag = 	Integer.parseInt(currentMsg.substring(0, 2));
 				}

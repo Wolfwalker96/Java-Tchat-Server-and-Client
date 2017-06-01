@@ -5,63 +5,71 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hearc.tchat.client.views_controllers.Controller">
+<VBox prefHeight="417.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hearc.tchat.client.views_controllers.Controller">
    <children>
-      <MenuBar VBox.vgrow="NEVER">
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Open…" />
-                  <Menu mnemonicParsing="false" text="Open Recent" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Save As…" />
-                  <MenuItem mnemonicParsing="false" text="Revert" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Preferences…" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Quit" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Undo" />
-                  <MenuItem mnemonicParsing="false" text="Redo" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Cut" />
-                  <MenuItem mnemonicParsing="false" text="Copy" />
-                  <MenuItem mnemonicParsing="false" text="Paste" />
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Select All" />
-                  <MenuItem mnemonicParsing="false" text="Unselect All" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-      <ListView fx:id="lstMessages" prefHeight="270.0" />
+      <ListView fx:id="lstMessages" prefHeight="220.0" prefWidth="519.0">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin></ListView>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <TextArea fx:id="txaText" prefHeight="90.0" />
-            <Button fx:id="btnSend" mnemonicParsing="false" onAction="#btnSendPressed" prefHeight="100.0" prefWidth="61.0" text="Button">
+            <TextArea fx:id="txaText" prefHeight="90.0">
                <HBox.margin>
-                  <Insets />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></TextArea>
+            <Button fx:id="btnSend" mnemonicParsing="false" onAction="#btnSendPressed" prefHeight="87.0" prefWidth="72.0" text="Send">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
             </Button>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="640.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="105.0" prefWidth="640.0">
          <children>
-            <TextField fx:id="txfIp" />
-            <TextField fx:id="txfPseudo" />
-            <Button fx:id="btnConnect" mnemonicParsing="false" onAction="#btnConnectPressed" text="Button" />
+            <GridPane prefHeight="71.0" prefWidth="310.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="89.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.0" minWidth="10.0" prefWidth="221.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Address IP :" />
+                  <TextField fx:id="txfIp" GridPane.columnIndex="1" />
+                  <Label text="Pseudo :" GridPane.rowIndex="1" />
+                  <TextField fx:id="txfPseudo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </GridPane>
+            <Button fx:id="btnConnect" mnemonicParsing="false" onAction="#btnConnectPressed" prefHeight="72.0" prefWidth="113.0" text="Connect">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Button>
+            <HBox prefHeight="112.0" prefWidth="69.0" />
+            <VBox prefHeight="96.0" prefWidth="143.0">
+               <children>
+                  <Button fx:id="btnVoice" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Voice enable">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnFile" mnemonicParsing="false" prefHeight="31.0" prefWidth="143.0" text="Send file">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </VBox>
          </children>
       </HBox>
    </children>

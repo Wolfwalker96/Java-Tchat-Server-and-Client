@@ -5,13 +5,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-public class Reciever implements Runnable{
+public class Receiver implements Runnable{
 
 	BufferedReader in = null;
 	Socket socket = null;
 	String msg = null;
 	Client client = null;
-	public Reciever(Socket socket, Client client) {
+	public Receiver(Socket socket, Client client) {
 		
 		this.socket = socket;
 		this.client = client;
@@ -37,7 +37,7 @@ public class Reciever implements Runnable{
 
 					Thread.sleep(200);
 				}
-				client.newMessage(msg);
+				if(msg.length()>2) client.newMessage(msg.substring(2));
 				if(socket.isClosed()){
 					alive = false;
 					System.out.println("THE END");
