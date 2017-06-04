@@ -47,10 +47,10 @@ public class MessageService implements Runnable{
 						PrintWriter tempOut = new PrintWriter(socket.getOutputStream());
 						in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 						CleanerStruct clear = new CleanerStruct();
-						
-						clear.add(socket, tempOut, in);
+						long ttl = System.currentTimeMillis();
+						clear.add(socket, tempOut, in, ttl);
 						out.add(tempOut);
-						new Thread(new MessageReciever(in, message)).start();
+						new Thread(new MessageReciever(in, message, clear)).start();
 						
 						cls.add(clear);
 						oldTcpSocket.add(socket);
@@ -74,10 +74,12 @@ class CleanerStruct
 	public Socket socket;
 	public PrintWriter out;
 	public BufferedReader in;
-	public void add(Socket socket, PrintWriter out, BufferedReader in){
+	public long ttl;
+	public void add(Socket socket, PrintWriter out, BufferedReader in, long ttl){
 		
 		this.socket=socket;
 		this.out=out;
 		this.in=in;
+		this.ttl = ttl;
 	}
 }

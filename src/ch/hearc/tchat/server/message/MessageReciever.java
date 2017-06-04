@@ -18,10 +18,13 @@ public class MessageReciever implements Runnable{
 	String currentMsg;
 	int flag;
 	boolean running = true;
-	public MessageReciever(BufferedReader in, List<String> message){
+	CleanerStruct cls;
+	
+	public MessageReciever(BufferedReader in, List<String> message, CleanerStruct cls){
 		
 		this.in = in;
 		this.message = message;
+		this.cls = cls;
 	}
 	
 	@Override
@@ -33,7 +36,7 @@ public class MessageReciever implements Runnable{
 				currentMsg = in.readLine();
 				System.out.println("SERVER: Message recieved ");
 				//System.out.println(currentMsg);
-				if(currentMsg != null && currentMsg.length() > 2){
+				if(currentMsg != null && currentMsg.length() >= 2){
 					flag = 	Integer.parseInt(currentMsg.substring(0, 2));
 				}
 				else{
@@ -47,14 +50,12 @@ public class MessageReciever implements Runnable{
 						break;
 					
 					case 2:
-						//Still alive (ack).
+						//Ack, reset timer
+						cls.ttl = System.currentTimeMillis();
 						break;
 						
-					case 3:
-						//Stop communications.
-							//Call cleaner thread : close.thread, close.in, close.out and remove from lists!
-						break;
 					default:
+						//Stop communications, kill thread.
 						//Timeout/error
 						in.close();
 						running = false;
@@ -64,6 +65,7 @@ public class MessageReciever implements Runnable{
 				currentMsg = null;
 			} catch (IOException e) {
 				running = false;
+				e.printStackTrace();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

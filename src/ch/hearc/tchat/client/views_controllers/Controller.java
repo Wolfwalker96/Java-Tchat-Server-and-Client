@@ -46,6 +46,7 @@ public class Controller implements Observer {
 
     @FXML
     public void initialize(){
+
         onDisconnect();
         btnFile.setDisable(true);
         btnVoice.setDisable(true);
@@ -71,13 +72,14 @@ public class Controller implements Observer {
 
     @FXML
     public void btnSendPressed(ActionEvent e){
-        // Send Message
+        // Send Message.
         Message tmp = new Message(txfPseudo.getText(),txaText.getText());
         client.send(tmp.toSend());
         txaText.setText("");
     }
 
     public void onConnectSuccess(){
+
         btnSend.setDisable(false);
         txaText.setDisable(false);
         lstMessages.setDisable(false);
@@ -91,6 +93,7 @@ public class Controller implements Observer {
     }
 
     public void onDisconnect(){
+
         btnSend.setDisable(true);
         txaText.setDisable(true);
         lstMessages.setDisable(true);
@@ -102,6 +105,7 @@ public class Controller implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+
         messages.add(arg.toString());
         lstMessages.setItems(messages);
     }

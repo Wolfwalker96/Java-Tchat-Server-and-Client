@@ -16,20 +16,22 @@ public class Client extends Observable {
 	String ip = "127.0.0.1";
 	int port = 2017;
 	Thread receiver = null;
-
+	Thread ack = null;
+	
 	List<Observer> listener = new ArrayList<>();
-
+	
 	public Client(){
-			
-			this.init();
-		}
+		
+		this.init();
+	}
 	public Client(String ip, int port){
+		
 		this.ip = ip;
 		this.port = port;
 		this.init();
 	}
-	
 	public void close(){
+		
 		try {
 			
 			while(!socket.isClosed()){
@@ -46,13 +48,13 @@ public class Client extends Observable {
 		
 		System.out.println("Client is starting...");
 		while(socket == null){
-			
-			try {	
-
+		
+			try {
+				
 				socket = new Socket(ip, port);
 			}
 			catch (IOException e) {
-
+				
 				System.out.println("Could not reach server, trying again...");
 			}
 		}
@@ -60,7 +62,9 @@ public class Client extends Observable {
 			
 			out = new PrintWriter(socket.getOutputStream());
 			receiver = new Thread(new Receiver(socket, this));
+			ack = new Thread(new Ack(socket, out));
 			receiver.start();
+			ack.start();
 			System.out.println("CLIENT: Ready.");
 		} catch (IOException e) {
 			
@@ -70,15 +74,13 @@ public class Client extends Observable {
 	public void send(String message){
 		
 		out.println("01"+message);
-		out.flush(); //Overkill for the win!
+		out.flush();
 		System.out.println("CLIENT: Message sent.");
 	}
 	public void newMessage(String message){
-		
 		//Add new message on interface.
 		System.out.println("CLIENT: Display message on interface. Msg: "+message);
         setChanged();
 		notifyObservers(message);
     }
-
 }

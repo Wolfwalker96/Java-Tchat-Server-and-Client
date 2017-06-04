@@ -34,10 +34,12 @@ public class TcpCleaner implements Runnable {
 			
 			for(CleanerStruct clear: cls){
 				
-				if(clear.socket.isClosed()){
+				if(clear.socket.isClosed() || System.currentTimeMillis()-clear.ttl > 6500){
 					
 					try {
-						
+						while(!clear.socket.isClosed()){
+							clear.socket.close();
+						}
 						clear.in.close();
 						clear.out.close();
 						
@@ -48,16 +50,16 @@ public class TcpCleaner implements Runnable {
 						System.out.println("SERVER: Socket closed "+clear.socket.toString());
 					} catch (IOException e) {
 						
-						//Nothing happens
+						System.out.println("SERVER: in tcpCleaner, already closed!");
 					}
 				}
 			}
 			try {
 				
-				Thread.sleep(2000);
+				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				
-				//Nothing happens.
+				System.out.println("SERVER: in tcpCleaner, sleep(200) interrupted.");
 			}
 		}
 	}
