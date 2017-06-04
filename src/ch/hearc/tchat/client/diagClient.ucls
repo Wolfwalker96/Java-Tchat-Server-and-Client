@@ -3,7 +3,7 @@
   realizations="true" associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="ch.hearc.tchat.client.Receiver" project="Tchat" 
     file="/Tchat/src/ch/hearc/tchat/client/Receiver.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="160" width="168" x="144" y="118"/>    
+    <position height="-1" width="-1" x="145" y="278"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="ch.hearc.tchat.client.views_controllers.Controller" project="Tchat" 
     file="/Tchat/src/ch/hearc/tchat/client/views_controllers/Controller.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="376" width="449" x="352" y="118"/>    
+    <position height="-1" width="-1" x="875" y="207"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="ch.hearc.tchat.client.Client" project="Tchat" 
     file="/Tchat/src/ch/hearc/tchat/client/Client.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="304" width="282" x="144" y="534"/>    
+    <position height="-1" width="-1" x="430" y="173"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="ch.hearc.tchat.client.Main" project="Tchat" 
     file="/Tchat/src/ch/hearc/tchat/client/Main.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="124" width="130" x="841" y="118"/>    
+    <position height="-1" width="-1" x="127" y="109"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="ch.hearc.tchat.client.Ack" project="Tchat" 
     file="/Tchat/src/ch/hearc/tchat/client/Ack.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="142" width="164" x="144" y="878"/>    
+    <position height="-1" width="-1" x="437" y="440"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="ch.hearc.tchat.client.Message" project="Tchat" 
     file="/Tchat/src/ch/hearc/tchat/client/Message.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="214" width="183" x="466" y="534"/>    
+    <position height="-1" width="-1" x="1269" y="149"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -56,7 +56,7 @@
     </display>  
   </class>  
   <association id="7">    
-    <end type="SOURCE" refId="2" navigable="false">      
+    <end type="SOURCE" refId="1" navigable="false">      
       <attribute id="8" name="client"/>      
       <multiplicity id="9" minimum="0" maximum="1"/>    
     </end>    
@@ -72,7 +72,7 @@
     <end type="TARGET" refId="5"/>  
   </dependency>  
   <association id="12">    
-    <end type="SOURCE" refId="1" navigable="false">      
+    <end type="SOURCE" refId="2" navigable="false">      
       <attribute id="13" name="client"/>      
       <multiplicity id="14" minimum="0" maximum="1"/>    
     </end>    
